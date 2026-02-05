@@ -183,8 +183,8 @@ const CONFIG = {
     },
     "chamberCallout": {
         "position": [
-            -80.24,
-            27.185
+            -80.255,
+            27.19
         ],
         "showAtZoom": 12
     }
