@@ -175,8 +175,8 @@ const CONFIG = {
     "cityLabel": {
         "name": "STUART",
         "position": [
-            -80.2531,
-            27.19
+            -80.245,
+            27.195
         ],
         "hideFromDefaultLabels": "Stuart",
         "hideAtZoom": 14
