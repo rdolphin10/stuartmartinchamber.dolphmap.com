@@ -18,7 +18,7 @@ const CONFIG = {
     },
     "client": {
         "name": "Chamber of Commerce Interactive Map",
-        "logoPath": "assets/logos/client-logo.png",
+        "logoPath": "assets/logos/client-logo.svg",
         "logoAlt": "Stuart Martin County Chamber of Commerce Logo"
     },
     "dolphLogo": {
@@ -33,11 +33,132 @@ const CONFIG = {
     },
     "banners": {
         "banner1": {
-            "image": "assets/banners/premium/sponsor.jpg",
+            "image": "assets/banners/premium/cbd.jpg",
             "link": "#",
-            "alt": "Premium Sponsor"
+            "alt": "Closets by Design"
         },
-        "banner2": [],
+        "banner2": [
+            {
+                "image": "assets/banners/slideshow/apex.jpg",
+                "link": "#",
+                "alt": "Apex Pavers & Pools"
+            },
+            {
+                "image": "assets/banners/slideshow/bam.jpg",
+                "link": "#",
+                "alt": "BAM"
+            },
+            {
+                "image": "assets/banners/slideshow/barn728.jpg",
+                "link": "#",
+                "alt": "Barn 728"
+            },
+            {
+                "image": "assets/banners/slideshow/ccc.jpg",
+                "link": "#",
+                "alt": "CCC"
+            },
+            {
+                "image": "assets/banners/slideshow/chap.jpg",
+                "link": "#",
+                "alt": "Chap"
+            },
+            {
+                "image": "assets/banners/slideshow/Cook Electric 728.jpg",
+                "link": "#",
+                "alt": "Cook Electric"
+            },
+            {
+                "image": "assets/banners/slideshow/eg.jpg",
+                "link": "#",
+                "alt": "EG"
+            },
+            {
+                "image": "assets/banners/slideshow/evergreenbanner.jpg",
+                "link": "#",
+                "alt": "Evergreen"
+            },
+            {
+                "image": "assets/banners/slideshow/ferr.jpg",
+                "link": "#",
+                "alt": "Ferr"
+            },
+            {
+                "image": "assets/banners/slideshow/fg.jpg",
+                "link": "#",
+                "alt": "FG"
+            },
+            {
+                "image": "assets/banners/slideshow/hobe728.jpg",
+                "link": "#",
+                "alt": "Hobe 728"
+            },
+            {
+                "image": "assets/banners/slideshow/martier728.jpg",
+                "link": "#",
+                "alt": "Martier 728"
+            },
+            {
+                "image": "assets/banners/slideshow/mcbride.jpg",
+                "link": "#",
+                "alt": "McBride"
+            },
+            {
+                "image": "assets/banners/slideshow/ns.jpg",
+                "link": "#",
+                "alt": "NS"
+            },
+            {
+                "image": "assets/banners/slideshow/nw.jpg",
+                "link": "#",
+                "alt": "NW"
+            },
+            {
+                "image": "assets/banners/slideshow/Ocean Breeze Resort.jpg",
+                "link": "#",
+                "alt": "Ocean Breeze Resort"
+            },
+            {
+                "image": "assets/banners/slideshow/Precision Disposal 728.jpg",
+                "link": "#",
+                "alt": "Precision Disposal"
+            },
+            {
+                "image": "assets/banners/slideshow/rare.jpg",
+                "link": "#",
+                "alt": "Rare"
+            },
+            {
+                "image": "assets/banners/slideshow/sandhill.jpg",
+                "link": "#",
+                "alt": "Sandhill"
+            },
+            {
+                "image": "assets/banners/slideshow/sovava.jpg",
+                "link": "#",
+                "alt": "Sovava"
+            },
+            {
+                "image": "assets/banners/slideshow/sp.jpg",
+                "link": "#",
+                "alt": "SP"
+            },
+            {
+                "image": "assets/banners/slideshow/stringers.jpg",
+                "link": "#",
+                "alt": "Stringers"
+            },
+            {
+                "image": "assets/banners/slideshow/The Yacht & County Club.jpg",
+                "link": "#",
+                "alt": "The Yacht & County Club"
+            },
+            {
+                "image": "assets/banners/slideshow/wild728.jpg",
+                "link": "#",
+                "alt": "Wild 728"
+            }
+        ],
         "slideshow": {
             "interval": 5000,
             "fadeTransition": 1000
