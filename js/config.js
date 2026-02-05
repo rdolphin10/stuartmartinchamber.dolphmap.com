@@ -18,7 +18,7 @@ const CONFIG = {
     },
     "client": {
         "name": "Chamber of Commerce Interactive Map",
-        "logoPath": "assets/logos/client-logo.svg",
+        "logoPath": "assets/logos/Stuart Logo Vertical.png",
         "logoAlt": "Stuart Martin County Chamber of Commerce Logo"
     },
     "dolphLogo": {
