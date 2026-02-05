@@ -18,7 +18,8 @@ const CONFIG = {
     },
     "client": {
         "name": "Chamber of Commerce Interactive Map",
-        "logoPath": "assets/logos/Stuart Logo Vertical.png",
+        "logoPath": "assets/logos/client-logo.svg",
+        "cornerLogoPath": "assets/logos/Stuart Logo Vertical.png",
         "logoAlt": "Stuart Martin County Chamber of Commerce Logo"
     },
     "dolphLogo": {
@@ -175,16 +176,16 @@ const CONFIG = {
     "cityLabel": {
         "name": "STUART",
         "position": [
-            -80.245,
-            27.195
+            -80.2531,
+            27.19
         ],
         "hideFromDefaultLabels": "Stuart",
         "hideAtZoom": 14
     },
     "chamberCallout": {
         "position": [
-            -80.255,
-            27.19
+            -80.245,
+            27.203
         ],
         "showAtZoom": 12
     }

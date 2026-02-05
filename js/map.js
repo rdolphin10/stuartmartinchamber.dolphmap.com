@@ -32,7 +32,7 @@ function populateUIElements() {
     // Set client logo in left panel
     const logoImg = document.getElementById('client-logo');
     if (logoImg && CONFIG.client.logoPath) {
-        logoImg.src = CONFIG.client.logoPath;
+        logoImg.src = CONFIG.client.cornerLogoPath || CONFIG.client.logoPath;
         logoImg.alt = CONFIG.client.logoAlt || 'Client Logo';
     }
 
