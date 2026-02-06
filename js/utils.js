@@ -23,8 +23,10 @@
  */
 function loadCSV(csvPath) {
     return new Promise(function(resolve, reject) {
+        // Add cache-busting parameter to prevent stale CSV data
+        var cacheBuster = csvPath + (csvPath.indexOf('?') === -1 ? '?' : '&') + '_v=' + Date.now();
         // Use PapaParse to load and parse the CSV file
-        Papa.parse(csvPath, {
+        Papa.parse(cacheBuster, {
             download: true,        // Download file from path
             header: true,          // First row contains column names
             dynamicTyping: true,   // Convert numbers automatically
