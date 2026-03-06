@@ -78,7 +78,7 @@ body {
     display: block;
     height: 75px;
     width: auto;
-    max-width: 220px;
+    max-width: 100%;
     object-fit: contain;
 }
 
@@ -238,6 +238,35 @@ body {
 .panel-title {
     margin: 0;
     font-size: 16px;
+}
+
+.category-filter {
+    width: 100%;
+    margin-top: 8px;
+    padding: 6px 8px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+}
+
+.category-filter:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: -1px;
+}
+
+.category-heading {
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #666;
+    background: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .business-list {
@@ -442,7 +471,7 @@ body {
     overflow: hidden;
 }
 
-/* Business card image in popup */
+/* Popup image in popup */
 .popup-business-card {
     margin: 0;
     width: 100%;

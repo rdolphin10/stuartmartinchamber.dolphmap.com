@@ -288,7 +288,7 @@ function createMarker(advertisers, map) {
         var popupEl = popup.getElement();
         if (!popupEl) return;
 
-        // Attach error handlers to business card images (no inline JS)
+        // Attach error handlers to popup images (no inline JS)
         var cardImages = popupEl.querySelectorAll('.business-card-img');
         cardImages.forEach(function(img) {
             img.addEventListener('error', function() {
@@ -683,7 +683,7 @@ function ensurePopupVisible(popup, map) {
         checkAndPan();
     }, 150);
 
-    // Watch for images loading in the popup (business cards)
+    // Watch for images loading in the popup (popup images)
     var images = popupEl.querySelectorAll('img');
     images.forEach(function(img) {
         if (!img.complete) {

@@ -198,11 +198,17 @@ function applyDolphStyle(map) {
                     map.setPaintProperty(layer.id, 'text-color', DOLPH_COLORS.cityTitles);
                     map.setLayoutProperty(layer.id, 'text-transform', 'uppercase');
                     map.setLayoutProperty(layer.id, 'text-font', ['DIN Pro Bold', 'Arial Unicode MS Bold']);
-                    // Hide the client's city from default labels (we'll add a custom one)
+                    // Hide city names from default labels (we'll add custom ones)
                     if (CONFIG.cityLabel && CONFIG.cityLabel.hideFromDefaultLabels) {
+                        const hideNames = Array.isArray(CONFIG.cityLabel.hideFromDefaultLabels)
+                            ? CONFIG.cityLabel.hideFromDefaultLabels
+                            : [CONFIG.cityLabel.hideFromDefaultLabels];
+                        const hideFilter = hideNames.length === 1
+                            ? ['==', ['get', 'name'], hideNames[0]]
+                            : ['in', ['get', 'name'], ['literal', hideNames]];
                         map.setLayoutProperty(layer.id, 'text-size', [
                             'case',
-                            ['==', ['get', 'name'], CONFIG.cityLabel.hideFromDefaultLabels], 0,
+                            hideFilter, 0,
                             12
                         ]);
                     }
@@ -269,6 +275,11 @@ function applyDolphStyle(map) {
             addCustomCityLabel(map);
         }
 
+        // Add county border overlay (if configured)
+        if (CONFIG.countyBorder) {
+            addCountyBorder(map);
+        }
+
     } catch (error) {
         console.error('Error applying Dolph styling:', error);
     }
@@ -331,6 +342,82 @@ function addCustomCityLabel(map) {
     // Set initial visibility
     updateLabelVisibility();
 
+    // Render additional city labels (if configured)
+    if (CONFIG.cityLabel.additionalLabels) {
+        CONFIG.cityLabel.additionalLabels.forEach(label => {
+            const el = document.createElement('div');
+            el.className = 'custom-city-label';
+            el.textContent = label.name;
+            const showAtZoom = label.showAtZoom || 10;
+            const labelHideZoom = label.hideAtZoom || 14;
+            el.style.cssText = `
+                color: ${DOLPH_COLORS.cityTitles};
+                font-family: 'DIN Pro Bold', 'Arial Black', sans-serif;
+                font-size: ${label.fontSize || '14px'};
+                font-weight: bold;
+                text-transform: uppercase;
+                white-space: nowrap;
+                pointer-events: none;
+                text-shadow: 1px 1px 2px white, -1px -1px 2px white, 1px -1px 2px white, -1px 1px 2px white;
+            `;
+
+            new mapboxgl.Marker({ element: el, anchor: 'center' })
+                .setLngLat(label.position)
+                .addTo(map);
+
+            const updateVis = () => {
+                const zoom = map.getZoom();
+                el.style.display = (zoom >= showAtZoom && zoom < labelHideZoom) ? 'block' : 'none';
+            };
+            map.on('zoom', updateVis);
+            updateVis();
+        });
+    }
+}
+
+/**
+ * Add county border overlay from GeoJSON
+ *
+ * Loads a GeoJSON boundary file and renders it as a line layer on the map.
+ * Only runs when CONFIG.countyBorder is defined in client.json.
+ *
+ * @param {mapboxgl.Map} map - The Mapbox map instance
+ */
+function addCountyBorder(map) {
+    const config = CONFIG.countyBorder;
+    const geojsonPath = config.geojsonPath;
+
+    if (!geojsonPath) {
+        console.warn('County border configured but no geojsonPath specified');
+        return;
+    }
+
+    fetch(geojsonPath)
+        .then(function(response) {
+            if (!response.ok) throw new Error('Failed to load county border GeoJSON');
+            return response.json();
+        })
+        .then(function(geojson) {
+            map.addSource('county-border', {
+                type: 'geojson',
+                data: geojson
+            });
+
+            map.addLayer({
+                id: 'county-border-line',
+                type: 'line',
+                source: 'county-border',
+                paint: {
+                    'line-color': config.lineColor || DOLPH_COLORS.countyLines,
+                    'line-width': config.lineWidth || 2.5,
+                    'line-opacity': config.lineOpacity || 0.7,
+                    'line-dasharray': config.lineDasharray || [3, 2]
+                }
+            });
+        })
+        .catch(function(error) {
+            console.error('Error loading county border:', error);
+        });
 }
 
 /**

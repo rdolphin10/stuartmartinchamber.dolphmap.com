@@ -122,16 +122,16 @@ function createPopupHTML(advertiser) {
 
     html += '</div>';
 
-    // Business Card Image (if available) - LAST
+    // Popup Image (if available) - LAST
     // Clickable to website if available
     // Note: Error handling for broken images is done via addEventListener below (no inline onerror)
-    if (advertiser.business_card) {
+    if (advertiser.popup_image) {
         html += '<div class="popup-business-card">';
         if (advertiser.website) {
             html += '<a href="' + escapeHTML(advertiser.website) + '" target="_blank" rel="noopener noreferrer">';
         }
-        html += '<img src="' + escapeHTML(advertiser.business_card) + '" ';
-        html += 'alt="' + escapeHTML(advertiser.name) + ' Business Card" ';
+        html += '<img src="' + escapeHTML(advertiser.popup_image) + '" ';
+        html += 'alt="' + escapeHTML(advertiser.name) + '" ';
         html += 'class="business-card-img" ';
         html += 'style="cursor: pointer;" ';
         html += 'loading="lazy">';

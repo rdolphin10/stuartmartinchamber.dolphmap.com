@@ -40,6 +40,11 @@ const CONFIG = {
         },
         "banner2": [
             {
+                "image": "assets/banners/slideshow/chap.jpg",
+                "link": "https://www.stuartmartinchamber.org/",
+                "alt": "Stuart Martin County Chamber of Commerce"
+            },
+            {
                 "image": "assets/banners/slideshow/sandhill.jpg",
                 "link": "https://www.sandhillcove.com",
                 "alt": "Sandhill Cove Retirement Living"
@@ -63,11 +68,6 @@ const CONFIG = {
                 "image": "assets/banners/slideshow/rare.jpg",
                 "link": "https://store.rareearthgallery.com",
                 "alt": "Rare Earth Gallery"
-            },
-            {
-                "image": "assets/banners/slideshow/chap.jpg",
-                "link": "https://www.stuartmartinchamber.org/",
-                "alt": "Stuart Martin County Chamber of Commerce"
             },
             {
                 "image": "assets/banners/slideshow/nw.jpg",
