@@ -93,11 +93,17 @@ body {
 
 .business-list-item:hover {
     background-color: var(--color-bg-secondary);
+    border-left-color: var(--color-primary-light);
 }
 
 .business-list-item.active {
     background-color: var(--color-bg-accent);
     border-left-color: var(--color-primary);
+}
+
+.category-heading {
+    border-left-color: var(--color-primary-light);
+    color: var(--color-primary);
 }
 
 /* Banner Styling */

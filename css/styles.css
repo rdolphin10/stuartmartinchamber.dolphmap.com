@@ -230,9 +230,11 @@ body {
 .panel-header {
     padding: 12px 16px;
     border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
     position: sticky;
     top: 0;
     background: white;
+    z-index: 2;
 }
 
 .panel-title {
@@ -256,14 +258,15 @@ body {
 }
 
 .category-heading {
-    padding: 8px 16px;
-    font-size: 11px;
+    padding: 8px 16px 8px 13px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     color: #666;
     background: #f0f0f0;
     border-bottom: 1px solid #ddd;
+    border-left: 3px solid #999;
     position: sticky;
     top: 0;
     z-index: 1;
@@ -276,21 +279,22 @@ body {
 }
 
 .business-list-item {
-    padding: 12px 16px;
+    padding: 10px 16px 10px 13px;
     border-bottom: 1px solid #eee;
+    border-left: 3px solid transparent;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, border-color 0.2s;
     font-size: 14px;
 }
 
 .business-list-item:hover {
-    background-color: #f5f5f5;
+    background-color: #f0f0f0;
+    border-left-color: #ccc;
 }
 
 .business-list-item.active {
     background-color: #e6f2ff;
     border-left: 3px solid #0066cc;
-    padding-left: 13px;
 }
 
 .business-list-item:last-child {

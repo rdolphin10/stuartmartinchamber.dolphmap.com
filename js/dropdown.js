@@ -93,6 +93,13 @@ function initializeDropdown(advertisers) {
 }
 
 /**
+ * Check if an advertiser is a Chamber of Commerce
+ */
+function isChamber(advertiser) {
+    return advertiser.name && advertiser.name.toLowerCase().includes('chamber of commerce');
+}
+
+/**
  * Build a flat alphabetical list (no categories)
  *
  * @param {Array} advertisers - Array of advertiser objects
@@ -102,7 +109,12 @@ function buildFlatList(advertisers) {
         return { advertiser: advertiser, originalIndex: index };
     });
 
+    // Chamber first, then alphabetical
     sortedBusinesses.sort(function(a, b) {
+        var aChamber = isChamber(a.advertiser);
+        var bChamber = isChamber(b.advertiser);
+        if (aChamber && !bChamber) return -1;
+        if (!aChamber && bChamber) return 1;
         return a.advertiser.name.localeCompare(b.advertiser.name);
     });
 
@@ -118,11 +130,16 @@ function buildFlatList(advertisers) {
  * @param {Array} advertisers - Array of advertiser objects
  */
 function buildGroupedList(advertisers) {
-    // Group advertisers by category
+    // Group advertisers by category, pulling out chamber entries
     var groups = {};
     var otherGroup = [];
+    var chamberItems = [];
 
     advertisers.forEach(function(advertiser, index) {
+        if (isChamber(advertiser)) {
+            chamberItems.push({ advertiser: advertiser, originalIndex: index });
+            return;
+        }
         var cat = (advertiser.category && advertiser.category.trim()) || '';
         if (cat === '') {
             otherGroup.push({ advertiser: advertiser, originalIndex: index });
@@ -132,6 +149,13 @@ function buildGroupedList(advertisers) {
             }
             groups[cat].push({ advertiser: advertiser, originalIndex: index });
         }
+    });
+
+    // Render chamber entries first (pinned to top, no category heading)
+    chamberItems.forEach(function(item) {
+        var li = createBusinessListItem(item.advertiser, item.originalIndex);
+        li.dataset.category = '_chamber';
+        businessListElement.appendChild(li);
     });
 
     // Sort category names alphabetically
@@ -296,10 +320,12 @@ function selectBusiness(index) {
         item.classList.remove('active');
     });
 
-    // Add 'active' class to selected item
-    if (items[index]) {
-        items[index].classList.add('active');
-    }
+    // Add 'active' class to selected item (match by data-index, not DOM position)
+    items.forEach(function(item) {
+        if (item.dataset.index === String(index)) {
+            item.classList.add('active');
+        }
+    });
 
     // Update current selection
     currentSelectedIndex = index;
